@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/intesso/connect-livereload#readme"
-
-    >connect-livereload (v0.6.0)</a>
+    <a href="https://github.com/intesso/connect-livereload#readme">connect-livereload (v0.6.0)</a>
 </h1>
 <h4>connect middleware for adding the livereload script to the response</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.connect-livereload">module connect-livereload</a><ol>
 
@@ -96,13 +89,13 @@
   var include = opt.include || [/.*/];
   var html = opt.html || _html;
   var rules = opt.rules || [{
-      match: /&#x3c;\/body&#x3e;(?![\s\S]*&#x3c;\/body&#x3e;)/i,
+      match: /&lt;\/body&gt;(?![\s\S]*&lt;\/body&gt;)/i,
       fn: prepend
     }, {
-      match: /&#x3c;\/html&#x3e;(?![\s\S]*&#x3c;\/html&#x3e;)/i,
+      match: /&lt;\/html&gt;(?![\s\S]*&lt;\/html&gt;)/i,
       fn: prepend
     }, {
-      match: /&#x3c;\!DOCTYPE.+?&#x3e;/i,
+      match: /&lt;\!DOCTYPE.+?&gt;/i,
       fn: append
     }];
   var disableCompression = opt.disableCompression || false;
@@ -110,19 +103,19 @@
   var plugins = opt.plugins || [];
 
   function snippet(host) {
-    var src = opt.src || &#x27;//&#x27; + host + &#x27;:&#x27; + port + &#x27;/livereload.js?snipver=1&#x27;;
+    var src = opt.src || '//' + host + ':' + port + '/livereload.js?snipver=1';
     return [src].concat(plugins).map(function(source) {
-      return &#x27;&#x3c;script src=&#x22;&#x27; + source + &#x27;&#x22; async=&#x22;&#x22; defer=&#x22;&#x22;&#x3e;&#x3c;/script&#x3e;&#x27;;
-    }).join(&#x27;&#x27;);
+      return '&lt;script src="' + source + '" async="" defer=""&gt;&lt;/script&gt;';
+    }).join('');
   }
 
   // helper functions
   var regex = (function () {
     var matches = rules.map(function (item) {
       return item.match.source;
-    }).join(&#x27;|&#x27;);
+    }).join('|');
 
-    return new RegExp(matches, &#x27;i&#x27;);
+    return new RegExp(matches, 'i');
   })();
 
   function prepend(w, s) {
@@ -135,7 +128,7 @@
 
   function _html(str) {
     if (!str) return false;
-    return /&#x3c;[:_-\w\s\!\/\=\&#x22;\&#x27;]+&#x3e;/i.test(str);
+    return /&lt;[:_-\w\s\!\/\=\"\']+&gt;/i.test(str);
   }
 
   function exists(body) {
@@ -145,7 +138,7 @@
 
   function snip(body) {
     if (!body) return false;
-    return (~body.lastIndexOf(&#x22;/livereload.js&#x22;));
+    return (~body.lastIndexOf("/livereload.js"));
   }
 
   function snap(body, host) {
@@ -163,22 +156,22 @@
   }
 
   function accept(req) {
-    var ha = req.headers[&#x22;accept&#x22;];
+    var ha = req.headers["accept"];
     if (!ha) return false;
-    return (~ha.indexOf(&#x22;html&#x22;));
+    return (~ha.indexOf("html"));
   }
 
   function check(str, arr) {
     if (!str) return true;
     return arr.some(function (item) {
-      if ((item.test &#x26;&#x26; item.test(str)) || ~str.indexOf(item)) return true;
+      if ((item.test &amp;&amp; item.test(str)) || ~str.indexOf(item)) return true;
       return false;
     });
   }
 
   // middleware
   return function livereload(req, res, next) {
-    var host = opt.hostname || req.headers.host.split(&#x27;:&#x27;)[0];
+    var host = opt.hostname || req.headers.host.split(':')[0];
 
     if (res._livereload) return next();
     res._livereload = true;
@@ -189,7 +182,7 @@
 
     // Disable G-Zip to enable proper inspecting of HTML
     if (disableCompression) {
-      req.headers[&#x27;accept-encoding&#x27;] = &#x27;identity&#x27;;
+      req.headers['accept-encoding'] = 'identity';
     }
 
     var runPatches = true;
@@ -198,7 +191,7 @@
     var end = res.end;
 
     res.push = function (chunk) {
-      res.data = (res.data || &#x27;&#x27;) + chunk;
+      res.data = (res.data || '') + chunk;
     };
 
     res.inject = res.write = function (string, encoding) {
@@ -207,7 +200,7 @@
       if (string !== undefined) {
         var body = string instanceof Buffer ? string.toString(encoding) : string;
         // If this chunk must receive a snip, do so
-        if (exists(body) &#x26;&#x26; !snip(res.data)) {
+        if (exists(body) &amp;&amp; !snip(res.data)) {
           res.push(snap(body, host));
           return true;
         }
@@ -224,7 +217,7 @@
       if (!runPatches) return writeHead.apply(res, arguments);
 
       var headers = arguments[arguments.length - 1];
-      if (typeof headers === &#x27;object&#x27;) {
+      if (typeof headers === 'object') {
         for (var name in headers) {
           if (/content-length/i.test(name)) {
             delete headers[name];
@@ -232,7 +225,7 @@
         }
       }
 
-      if (res.getHeader(&#x27;content-length&#x27;)) res.removeHeader(&#x27;content-length&#x27;);
+      if (res.getHeader('content-length')) res.removeHeader('content-length');
 
       writeHead.apply(res, arguments);
     };
@@ -253,3 +246,4 @@
     ]
 </div>
 </div>
+</body></html>
