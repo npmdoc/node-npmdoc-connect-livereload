@@ -1,9 +1,14 @@
-# api documentation for  [connect-livereload (v0.6.0)](https://github.com/intesso/connect-livereload#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-connect-livereload.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-connect-livereload) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-connect-livereload.svg)](https://travis-ci.org/npmdoc/node-npmdoc-connect-livereload)
+# npmdoc-connect-livereload
+
+#### api documentation for  [connect-livereload (v0.6.0)](https://github.com/intesso/connect-livereload#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-connect-livereload.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-connect-livereload) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-connect-livereload.svg)](https://travis-ci.org/npmdoc/node-npmdoc-connect-livereload)
+
 #### connect middleware for adding the livereload script to the response
 
-[![NPM](https://nodei.co/npm/connect-livereload.png?downloads=true)](https://www.npmjs.com/package/connect-livereload)
+[![NPM](https://nodei.co/npm/connect-livereload.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/connect-livereload)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-connect-livereload/build/screenCapture.buildNpmdoc.browser.%252Fhome%252Ftravis%252Fbuild%252Fnpmdoc%252Fnode-npmdoc-connect-livereload%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-connect-livereload/build/apidoc.html)
+- [https://npmdoc.github.io/node-npmdoc-connect-livereload/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-connect-livereload/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-connect-livereload/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-connect-livereload/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-connect-livereload/build/screenCapture.npmPackageListing.svg)
 
@@ -17,16 +22,14 @@
 
 {
     "author": {
-        "name": "Andi Neck",
-        "email": "andi.neck@intesso.com"
+        "name": "Andi Neck"
     },
     "bugs": {
         "url": "https://github.com/intesso/connect-livereload/issues"
     },
     "contributors": [
         {
-            "name": "Andi Neck",
-            "email": "andi.neck@intesso.com"
+            "name": "Andi Neck"
         }
     ],
     "dependencies": {},
@@ -57,13 +60,11 @@
     "main": "index",
     "maintainers": [
         {
-            "name": "andineck",
-            "email": "andi.neck@intesso.com"
+            "name": "andineck"
         }
     ],
     "name": "connect-livereload",
     "optionalDependencies": {},
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git://github.com/intesso/connect-livereload.git"
@@ -74,16 +75,6 @@
     "version": "0.6.0"
 }
 ```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module connect-livereload](#apidoc.module.connect-livereload)
-
-
-
-# <a name="apidoc.module.connect-livereload"></a>[module connect-livereload](#apidoc.module.connect-livereload)
 
 
 
